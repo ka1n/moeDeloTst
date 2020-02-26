@@ -8,5 +8,9 @@ namespace moeDeloTst.Models
     public class BaseContragent
     {
         public int Id { get; set; }
+
+        public int IdContragentType { get; set; }
+
+        public int IdContragent { get; set; }
     }
 }

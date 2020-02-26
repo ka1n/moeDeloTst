@@ -6,30 +6,30 @@ using moeDeloTst.Repository;
 
 namespace moeDeloTst.Controllers
 {
-    public class IndividualController : Controller
+    public class OrganizationController : Controller
     {
-        private readonly IndividualRepository individualRepository;
+        private readonly OrganizationRepository organizationRepository;
 
-        public IndividualController(IConfiguration configuration)
+        public OrganizationController(IConfiguration configuration)
         {
-            individualRepository = new IndividualRepository(configuration);
+            organizationRepository = new OrganizationRepository(configuration);
         }
-        // GET: Individual
+        // GET: Organization
         public ActionResult Index()
         {
-            return View(individualRepository.FindAll().ToList());
+            return View(organizationRepository.FindAll().ToList());
         }
 
-        // POST: Individual/Create
+        // POST: Organization/Create
         [HttpPost]
-        public IActionResult Create(Individual ind)
+        public IActionResult Create(Organization org)
         {
             if (ModelState.IsValid)
             {
-                individualRepository.Add(ind);
+                organizationRepository.Add(org);
                 return RedirectToAction("Index");
             }
-            return View(ind);
+            return View(org);
         }
 
         public IActionResult Create()
@@ -37,14 +37,14 @@ namespace moeDeloTst.Controllers
             return View();
         }
 
-        // GET: /Individual/Edit/1
+        // GET: /Organization/Edit/1
         public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            Individual obj = individualRepository.FindByID(id.Value);
+            Organization obj = organizationRepository.FindByID(id.Value);
             if (obj == null)
             {
                 return NotFound();
@@ -53,20 +53,20 @@ namespace moeDeloTst.Controllers
 
         }
 
-        // POST: /Individual/Edit   
+        // POST: /Organization/Edit   
         [HttpPost]
-        public IActionResult Edit(Individual obj)
+        public IActionResult Edit(Organization obj)
         {
 
             if (ModelState.IsValid)
             {
-                individualRepository.Update(obj);
+                organizationRepository.Update(obj);
                 return RedirectToAction("Index");
             }
             return View(obj);
         }
 
-        // GET:/Individual/Delete/1
+        // GET:/Organization/Delete/1
         public IActionResult Delete(int? id)
         {
 
@@ -74,9 +74,8 @@ namespace moeDeloTst.Controllers
             {
                 return NotFound();
             }
-            individualRepository.Remove(id.Value);
+            organizationRepository.Remove(id.Value);
             return RedirectToAction("Index");
         }
-
     }
 }

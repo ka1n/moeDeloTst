@@ -1,4 +1,4 @@
-﻿@model IEnumerable<moeDeloTst.Models.Individual>
+﻿@model IEnumerable<moeDeloTst.Models.Document>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,16 +12,13 @@
 <table class="table">
     <tr>
         @*<th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>*@
+                @Html.DisplayNameFor(model => model.Id)
+            </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.DocNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Patronymic)
+            @Html.DisplayNameFor(model => model.DocName)
         </th>
         <th></th>
     </tr>
@@ -30,16 +27,13 @@
     {
         <tr>
             @*<td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>*@
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @Html.DisplayFor(modelItem => item.DocNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Patronymic)
+                @Html.DisplayFor(modelItem => item.DocName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

@@ -53,7 +53,7 @@ namespace moeDeloTst
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Individual}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
+
 namespace moeDeloTst.Repository
 {
-    public class IndividualRepository : IRepository<Individual>
+    public class OrganizationRepository : IRepository<Organization>
     {
         private readonly string connectionString;
         private int contragentId;
-        public IndividualRepository(IConfiguration configuration)
+        public OrganizationRepository(IConfiguration configuration)
         {
             connectionString = configuration.GetValue<string>("DBInfo:ConnectionString");
         }
@@ -25,33 +26,33 @@ namespace moeDeloTst.Repository
             }
         }
 
-        public void Add(Individual item)
+        public void Add(Organization item)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
 
-                contragentId = dbConnection.Query<int>("insert into md.contragents(\"IdContragentType\") values(1) returning id").First();
+                contragentId = dbConnection.Query<int>("insert into md.contragents(\"IdContragentType\") values(2) returning id").First();
                 item.IdContragent = contragentId;
-                dbConnection.Execute("INSERT INTO md.individual (lastname,firstname,patronymic,\"IdContragent\") VALUES(@LastName,@FirstName,@Patronymic, @IdContragent) ", item);
+                dbConnection.Execute("INSERT INTO md.organization (name,address,\"IdContragent\") VALUES(@Name,@Address, @IdContragent) ", item);
             }
         }
 
-        public IEnumerable<Individual> FindAll()
+        public IEnumerable<Organization> FindAll()
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<Individual>("SELECT * FROM md.individual");
+                return dbConnection.Query<Organization>("SELECT * FROM md.organization");
             }
         }
 
-        public Individual FindByID(int id)
+        public Organization FindByID(int id)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<Individual>("SELECT * FROM md.individual WHERE id = @Id", new { Id = id }).FirstOrDefault();
+                return dbConnection.Query<Organization>("SELECT * FROM md.organization WHERE id = @Id", new { Id = id }).FirstOrDefault();
             }
         }
 
@@ -60,17 +61,19 @@ namespace moeDeloTst.Repository
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Execute("DELETE FROM md.individual WHERE id=@Id", new { Id = id });
+                dbConnection.Execute("DELETE FROM md.organization WHERE id=@Id", new { Id = id });
             }
         }
 
-        public void Update(Individual item)
+        public void Update(Organization item)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Query("UPDATE md.individual SET lastname = @LastName,  firstname  = @FirstName, patronymic= @Patronymic WHERE id = @Id", item);
+                dbConnection.Query("UPDATE md.organization SET name = @Name,  address  = @Address WHERE id = @Id", item);
             }
         }
     }
+
 }
+
