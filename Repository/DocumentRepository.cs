@@ -31,7 +31,7 @@ namespace moeDeloTst.Repository
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Execute("INSERT INTO md.documents (docnumber,docname) VALUES(@DocNumber,@DocName) ", item);
+                dbConnection.Execute("INSERT INTO md.documents (docnumber,docname,\"IdContragent\") VALUES(@DocNumber,@DocName,@Id) ", item);
             }
         }
 

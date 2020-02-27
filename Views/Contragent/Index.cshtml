@@ -1,14 +1,11 @@
 ﻿@model moeDeloTst.Models.Contragent
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Список всех контрагентов";
 }
 
-<h2>Index</h2>
+<h2>Список всех контрагентов</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <tr>
         <th>Фамилия</th>
@@ -28,7 +25,9 @@
             <td>-</td>
             <td>-</td>
             <td>
-                <a asp-action="Index" asp-controller="Document" asp-route-id="@item.IdContragent">Документы контрагента</a>
+                <a asp-action="Index" asp-controller="Document" asp-route-id="@item.IdContragent">Просмотреть документы</a>
+                <br>
+                <a asp-action="Create" asp-controller="Document" asp-route-id="@item.IdContragent">Добавить документ</a>
             </td>
         </tr>
     }
@@ -44,7 +43,9 @@
             <td>@item.Name</td>
             <td>@item.Address</td>
             <td>
-                <a asp-action="Index" asp-controller="Document" asp-route-id="@item.IdContragent">Документы контрагента</a>
+                <a asp-action="Index" asp-controller="Document" asp-route-id="@item.IdContragent">Просмотреть документы</a>
+                <br>
+                <a asp-action="Create" asp-controller="Document" asp-route-id="@item.IdContragent">Добавить документ</a>
             </td>
         </tr>
     }

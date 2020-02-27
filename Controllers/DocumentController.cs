@@ -29,7 +29,7 @@ namespace moeDeloTst.Controllers
 
         // POST: Document/Create
         [HttpPost]
-        public IActionResult Create(Document doc)
+        public IActionResult Create(Document? doc)
         {
             if (ModelState.IsValid)
             {
@@ -38,7 +38,6 @@ namespace moeDeloTst.Controllers
             }
             return View(doc);
         }
-
         public IActionResult Create()
         {
             return View();

@@ -1,19 +1,16 @@
 ﻿@model IEnumerable<moeDeloTst.Models.Document>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Документы контрагента";
 }
 
-<h2>Index</h2>
+    <h2>Документы контрагента</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" asp-route-id="@ViewContext.RouteData.Values["id"]">Создать новый документ</a>
 </p>
 <table class="table">
     <tr>
-        @*<th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.DocNumber)
         </th>
@@ -26,9 +23,6 @@
     @foreach (var item in Model)
     {
         <tr>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.DocNumber)
             </td>
@@ -36,8 +30,8 @@
                 @Html.DisplayFor(modelItem => item.DocName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are sure wants to delete?');">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Вы действительно хотите удалить запись?');">Удалить</a>
             </td>
         </tr>
     }

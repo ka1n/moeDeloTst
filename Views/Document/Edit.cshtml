@@ -1,14 +1,14 @@
 ﻿@model moeDeloTst.Models.Document
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Изменение документа контрагента";
 }
 
-<h2>Edit</h2>
+<h2>Изменение документа контрагента</h2>
 
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>Customer Information:</h4>
+        <h4>Информация о документе контрагента:</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
@@ -27,18 +27,12 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Сохранить" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Назад к списку</a>
 </div>
-
-@section Scripts {
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-}
